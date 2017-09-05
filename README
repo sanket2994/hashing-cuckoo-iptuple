@@ -1,0 +1,24 @@
+This is a git repository consisting of a library which hashes the ip addresses on the hash table using the ip tuple parameters.
+I have implemented it using Cuckoo hashing technique.
+The repository also contains two types of servers. 
+The one server is using raw sockets to grep packets.
+And the other server is only greping packets following TCP or UDP protocol.
+The 2nd server is implemented using two ways i.e. Multithreaded approach as well as using poll() fuction.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
