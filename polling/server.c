@@ -113,6 +113,7 @@ int main()
 					packet->ip=ip;
 					packet->udp=udp;
 					packet->tcp=NULL;
+					printf("jgfjfihfhef\n");
 					insertPacket(packet, hashtable, 0, PRINT_PKT);
 					
 					break;
@@ -133,7 +134,7 @@ int main()
 					printf("New connection established at ip : %s\n",inet_ntoa(caddr.sin_addr));
 					read(clifd[nfds].fd, buff, sizeof(buff));
 					printf("The read data is: %s\n", buff);
-					getsockname(clifd[nfds].fd, (struct sockaddr*)&caddr, &clen);	
+					//getsockname(clifd[nfds].fd, (struct sockaddr*)&caddr, &clen);	
 										
 					param *packet=(param*)malloc(sizeof(param));
 					struct iphdr *ip=(struct iphdr*)malloc(sizeof(struct iphdr));
@@ -142,7 +143,8 @@ int main()
 					ip->protocol=6;
 					ip->saddr=caddr.sin_addr.s_addr;
 					ip->daddr=saddr.sin_addr.s_addr;
-					
+					getsockname(clifd[nfds].fd, (struct sockaddr*)&caddr, &clen );
+
 					tcp->th_sport=htons(caddr.sin_port);
 					tcp->th_dport=htons(caddr.sin_port);
 					
@@ -174,7 +176,7 @@ int main()
 					perror("read");
 				}
 				printf("The received data is: %s\n", buff);
-				getsockname(clifd[i].fd, (struct sockaddr*)&caddr, &clen);
+			
 				
 				param *packet=(param*)malloc(sizeof(param));
 				struct iphdr *ip=(struct iphdr*)malloc(sizeof(struct iphdr));
@@ -183,7 +185,7 @@ int main()
 				ip->protocol=6;
 				ip->saddr=caddr.sin_addr.s_addr;
 				ip->daddr=saddr.sin_addr.s_addr;
-				
+				getsockname(clifd[i].fd, (struct sockaddr*)&caddr, &clen); 	
 				tcp->th_sport=htons(caddr.sin_port);
 				tcp->th_dport=htons(caddr.sin_port);
 				
