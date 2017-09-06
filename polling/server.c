@@ -113,7 +113,6 @@ int main()
 					packet->ip=ip;
 					packet->udp=udp;
 					packet->tcp=NULL;
-					printf("jgfjfihfhef\n");
 					insertPacket(packet, hashtable, 0, PRINT_PKT);
 					
 					break;
